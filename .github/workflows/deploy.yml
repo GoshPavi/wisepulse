@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Deploy to WordPress via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
@@ -21,7 +21,7 @@ jobs:
           protocol: ftp
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./
-          server-dir: /www/wwwroot/wordpress/wp-content/themes/wisepulse/  # 修改为你的主题路径
+          server-dir: /www/wwwroot/wordpress/wp-content/themes/wisepulse/
           exclude: |
             **/.git*
             **/.github*
