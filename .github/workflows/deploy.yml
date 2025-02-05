@@ -1,0 +1,29 @@
+name: Deploy WordPress Theme via FTP
+
+on:
+  push:
+    branches:
+      - main  # 只有推送到 main 分支才会触发部署
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Deploy to WordPress via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: ${{ secrets.FTP_PORT }}
+          local-dir: ./
+          server-dir: /www/wwwroot/wordpress/wp-content/themes/wisepulse/  # 修改为你的主题路径
+          exclude: |
+            **/.git*
+            **/.github*
+            **/node_modules/*
+            **/vendor/*
