@@ -18,7 +18,7 @@ jobs:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
+          protocol: sftp
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./
           server-dir: /www/wwwroot/wordpress/wp-content/themes/wisepulse/
